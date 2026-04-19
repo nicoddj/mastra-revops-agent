@@ -1,5 +1,14 @@
 import { Agent } from "@mastra/core/agent";
+import { Memory } from "@mastra/memory";
+import { LibSQLStore } from "@mastra/libsql";
 import { getCustomerMetrics, getChurnRisk, getPipelineStatus } from "../tools/revops-tools";
+
+const memory = new Memory({
+  storage: new LibSQLStore({
+    id: "revops-memory",
+    url: "file:./mastra.db",
+  }),
+});
 
 export const revopsAgent = new Agent({
   id: "revops-agent",
@@ -25,4 +34,5 @@ export const revopsAgent = new Agent({
     getChurnRisk,
     getPipelineStatus,
   },
+  memory,
 });
