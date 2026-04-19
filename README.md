@@ -20,7 +20,7 @@ Ask questions in natural language and get data-driven RevOps insights:
 ## Tech stack
 
 - [Mastra](https://mastra.ai) — TypeScript agent framework
-- [Anthropic Claude Haiku](https://anthropic.com) — LLM
+- [Anthropic Claude Haiku 4.5](https://anthropic.com) — LLM
 - TypeScript
 
 ## Getting started
