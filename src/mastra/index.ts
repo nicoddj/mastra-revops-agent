@@ -5,9 +5,11 @@ import { DuckDBStore } from "@mastra/duckdb";
 import { MastraCompositeStore } from '@mastra/core/storage';
 import { Observability, DefaultExporter, CloudExporter, SensitiveDataFilter } from '@mastra/observability';
 import { revopsAgent } from './agents/revops-agent';
+import { revopsWeeklyReport } from './workflows/revops-workflow';
 
 export const mastra = new Mastra({
   agents: { revopsAgent },
+  workflows: { revopsWeeklyReport },
   storage: new MastraCompositeStore({
     id: 'composite-storage',
     default: new LibSQLStore({
