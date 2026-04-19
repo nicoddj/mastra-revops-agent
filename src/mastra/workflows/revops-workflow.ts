@@ -60,3 +60,20 @@ const getPipelineStep = createStep({
     };
   },
 });
+
+export const revopsWeeklyReport = createWorkflow({
+  id: "revops-weekly-report",
+  description: "Weekly RevOps health report",
+  inputSchema: z.object({}),
+  outputSchema: z.object({
+    totalMRR: z.number(),
+    customerCount: z.number(),
+    atRiskCount: z.number(),
+    totalMRRAtRisk: z.number(),
+    totalPipeline: z.number(),
+    weightedForecast: z.number(),
+    dealCount: z.number(),
+  }),
+})
+  .parallel([getMetricsStep, getChurnStep, getPipelineStep])
+  .commit();
